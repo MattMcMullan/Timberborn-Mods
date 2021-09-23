@@ -26,7 +26,7 @@
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="del -r $(TargetDir)thunderstore&#xD;&#xA;mkdir $(TargetDir)thunderstore\plugins\MattMcMullan\&#xD;&#xA;copy $(TargetPath) $(TargetDir)thunderstore\plugins\MattMcMullan\&#xD;&#xA;copy $(ProjectDir)thunderstore\* $(TargetDir)thunderstore&#xD;&#xA;del $(TargetDir)thunderstore.zip&#xD;&#xA;powershell Compress-Archive $(TargetDir)thunderstore/* $(TargetDir)thunderstore.zip" />
+    <Exec Command="del $(TargetDir)thunderstore /Q /s&#xD;&#xA;mkdir $(TargetDir)thunderstore\plugins\MattMcMullan\ /Q&#xD;&#xA;copy $(TargetPath) $(TargetDir)thunderstore\plugins\MattMcMullan\&#xD;&#xA;copy $(ProjectDir)thunderstore\* $(TargetDir)thunderstore&#xD;&#xA;del $(TargetDir)thunderstore.zip&#xD;&#xA;powershell Compress-Archive $(TargetDir)thunderstore/* $(TargetDir)thunderstore.zip" />
   </Target>
 
 </Project>
