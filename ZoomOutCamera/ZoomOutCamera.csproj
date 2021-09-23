@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
@@ -24,5 +24,9 @@
       <HintPath>..\Libs\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
   </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="del -r $(TargetDir)thunderstore&#xD;&#xA;mkdir $(TargetDir)thunderstore\plugins\MattMcMullan\&#xD;&#xA;copy $(TargetPath) $(TargetDir)thunderstore\plugins\MattMcMullan\&#xD;&#xA;copy $(ProjectDir)thunderstore\* $(TargetDir)thunderstore&#xD;&#xA;del $(TargetDir)thunderstore.zip&#xD;&#xA;powershell Compress-Archive $(TargetDir)thunderstore/* $(TargetDir)thunderstore.zip" />
+  </Target>
 
 </Project>

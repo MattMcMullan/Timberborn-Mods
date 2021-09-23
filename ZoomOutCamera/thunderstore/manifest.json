@@ -1,0 +1,7 @@
+{
+    "name": "Zoom Out The Camera",
+    "version_number": "1.0.0",
+    "website_url": "https://github.com/MattMcMullan/Timberborn-Mods",
+    "description": "Allows the default camera to zoom out to the relaxed camera distance. Allows the relaxed camera to zoom out to the map editor camera distance.",
+    "dependencies": ["BepInEx-BepInExPack_Timberborn-5.4.15"]
+}
