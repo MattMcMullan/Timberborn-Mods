@@ -1,5 +1,6 @@
 ﻿using HarmonyLib;
 using Timberborn.CameraSystem;
+using Timberborn.Common;
 using UnityEngine;
 
 namespace ZoomOutCamera
@@ -9,16 +10,16 @@ namespace ZoomOutCamera
         [HarmonyPatch(typeof(CameraComponent), "Awake")]
         public static class UpdateZoomLimit
         {
-            private static void Postfix(CameraComponent __instance)
+            private static void Postfix(ref FloatLimits ____defaultZoomLimits, ref FloatLimits ____relaxedZoomLimits, FloatLimits ____mapEditorZoomLimits)
             {
-                var default_initial = __instance.DefaultZoomLimits;
-                var relaxed_initial = __instance.RelaxedZoomLimits;
-                __instance.DefaultZoomLimits = __instance.RelaxedZoomLimits;
-                __instance.RelaxedZoomLimits = __instance.MapEditorZoomLimits;
+                var default_initial = ____defaultZoomLimits;
+                var relaxed_initial = ____relaxedZoomLimits;
+                ____defaultZoomLimits = ____relaxedZoomLimits;
+                ____relaxedZoomLimits = ____mapEditorZoomLimits;
                 Debug.Log("Increased zoom limits.");
-                Debug.Log($"Default Zoom Limit {default_initial.Max} -> {__instance.DefaultZoomLimits.Max}");
-                Debug.Log($"Relaxed Zoom Limit {relaxed_initial.Max} -> {__instance.MapEditorZoomLimits.Max}");
-                Debug.Log($"Map Editor Zoom Limit {__instance.MapEditorZoomLimits.Max}, Unchanged");
+                Debug.Log($"Default Zoom Limit {default_initial.Max} -> {____defaultZoomLimits.Max}");
+                Debug.Log($"Relaxed Zoom Limit {relaxed_initial.Max} -> {____mapEditorZoomLimits.Max}");
+                Debug.Log($"Map Editor Zoom Limit {____mapEditorZoomLimits.Max}, Unchanged");
             }
         }
     }
