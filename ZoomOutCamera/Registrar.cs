@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace ZoomOutCamera
 {
-    [BepInPlugin("Matt.McMullan.Timberborn.ZoomOutCamera", "Zoom Out The Camera", "1.0.0.0")]
+    [BepInPlugin("Matt.McMullan.Timberborn.ZoomOutCamera", "Zoom Out The Camera", "1.0.1.0")]
     [BepInProcess("Timberborn.exe")]
     public class Registrar : BaseUnityPlugin
     {
